@@ -16,6 +16,6 @@ class Record extends Model
         'job',
         'age',
         'contact',
-        'address'
+        'address',
     ];
 }

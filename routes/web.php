@@ -3,24 +3,24 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecordController;
 
-//returning homepage
-Route::get('/home',RecordController::class .'@display_record')->name('record.index');
+// Returning homepage
+Route::get('/', [RecordController::class, 'display_record'])->name('record.index');
 
-//returning create record form
-Route::get('/record/create',RecordController::class .'@display_create')->name('record.create');
+// Returning create record form
+Route::get('/record/create', [RecordController::class, 'display_create'])->name('record.create');
 
-//returning update record form
-Route::get('/record/{record}/update',RecordController::class .'@display_update')->name('record.update');
+// Returning update record form
+Route::get('/record/{record}/update', [RecordController::class, 'display_update'])->name('record.updating');
 
-//returning 
-Route::get('/record/{record}',RecordController::class .'@show_record')->name('record.show');
+// Returning show record form
+Route::get('/record/{record}', [RecordController::class, 'show_record'])->name('record.update');
 
-//store record
-Route::post('/record', RecordController::class .'@store')->name('record.store');
+// Store record
+Route::post('/record', [RecordController::class, 'store'])->name('record.store');
 
-//delete record
-Route::delete('/record/{record}',RecordController::class .'@delete')->name('record.delete');
+// Delete record
+Route::delete('/record/{record}', [RecordController::class, 'delete'])->name('record.delete');
 
-//update record
-Route::put('/record/{record}', RecordController::class .'@update')->name('record.update');
+// Update record
+Route::put('/record/{record}', [RecordController::class, 'update'])->name('record.update');
 
