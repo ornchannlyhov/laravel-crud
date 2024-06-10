@@ -6,7 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning fixed-top z-0" >
         <div class="container-fluid">
         <a class="navbar-brand h1" href={{ route('record.index') }}>CRUDPosts</a>
         <div class="justify-end ">
