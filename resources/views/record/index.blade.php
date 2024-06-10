@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning navbar-fixed">
         <div class="container-fluid">
             <a class="navbar-brand h1" href="{{ route('record.index') }}">Records</a>
             <div class="justify-end ">
@@ -34,24 +34,38 @@
         </div>
     </nav>
     <div class="container">
-        @foreach ($record as $info )
-            <h3>{{$info->name}}</h3>
-            <p>job: {{ $info->job }}</p>
-            <p>age: {{ $info->age }}</p>
-            <p>contact: {{ $info->contact }}</p>
-            <p>address: {{ $info->address }}</p>
-            <p><strong>Published on:</strong> {{ $info->created_at }}</p>
-
-            <a href="{{ route('record.index') }}" class="btn btn-primary">Back to Records</a>
-            <a href="{{ route('record.update', $info->id) }}" class="btn btn-warning">Update Record</a>
-            
-            <form action="{{ route('record.delete', $info->id) }}" method="POST" style="display:inline-block;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete Record</button>
-            </form>
-        @endforeach
-    </div>
-</body>
-</html>
-
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Age</th>
+                    <th>Contact</th>
+                    <th>Address</th>
+                    <th>Published On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($record as $info)
+                <tr>
+                    <td>{{ $info->name }}</td>
+                    <td>{{ $info->job }}</td>
+                    <td>{{ $info->age }}</td>
+                    <td>{{ $info->contact }}</td>
+                    <td>{{ $info->address }}</td>
+                    <td>{{ $info->created_at }}</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="{{ route('record.index') }}" class="btn btn-primary">Back</a>
+                            <a href="{{ route('record.update', $info->id) }}" class="btn btn-warning">Update</a>
+                            <form action="{{ route('record.delete', $info->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
